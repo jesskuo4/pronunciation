@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App-header {
+  padding: 2rem 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.App-header p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.App-main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Global styles for components */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1rem 0;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.button {
+  background: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background: #45a049;
+}
+
+.button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.button.primary {
+  background: #2196F3;
+}
+
+.button.primary:hover {
+  background: #1976D2;
+}
+
+.button.danger {
+  background: #f44336;
+}
+
+.button.danger:hover {
+  background: #d32f2f;
+}
+
+.text-display {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 1.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.score-display {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.feedback-list {
+  text-align: left;
+  margin: 1rem 0;
+}
+
+.feedback-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.feedback-list li {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border-left: 4px solid #4CAF50;
+}
