@@ -4,44 +4,18 @@
 
 import { TranscriptionAgent } from './TranscriptionAgent';
 
-// Mock the Web Speech API
-const mockSpeechRecognition = {
-  continuous: false,
-  interimResults: false,
-  lang: 'en-US',
-  maxAlternatives: 1,
-  start: jest.fn(),
-  stop: jest.fn(),
-  addEventListener: jest.fn(),
-  removeEventListener: jest.fn(),
-  onresult: null,
-  onerror: null,
-  onend: null,
-};
-
-// Mock window properties
-Object.defineProperty(window, 'webkitSpeechRecognition', {
-  value: jest.fn(() => mockSpeechRecognition),
-  writable: true,
-});
-
-Object.defineProperty(window, 'SpeechRecognition', {
-  value: jest.fn(() => mockSpeechRecognition),
-  writable: true,
-});
+// Speech Recognition API is mocked globally in setupTests.ts
 
 describe('TranscriptionAgent', () => {
   let agent: TranscriptionAgent;
+  let mockSpeechRecognition: any;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    // Reset mock methods
-    mockSpeechRecognition.start = jest.fn();
-    mockSpeechRecognition.stop = jest.fn();
-    mockSpeechRecognition.onresult = null;
-    mockSpeechRecognition.onerror = null;
-    mockSpeechRecognition.onend = null;
+    // Create agent and get its internal recognition instance for testing
     agent = new TranscriptionAgent();
+    // Access the internal recognition object that was created
+    mockSpeechRecognition = (agent as any).recognition;
   });
 
   describe('constructor', () => {
