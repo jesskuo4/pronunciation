@@ -77,3 +77,45 @@ Object.defineProperty(window, 'webkitAudioContext', {
   writable: true,
   value: window.AudioContext,
 });
+
+// Mock Web Speech API for tests
+// Create constructor that always returns a fresh mock instance
+// Use non-Jest functions to avoid clearAllMocks affecting them
+const createSpeechRecognitionInstance = () => ({
+  continuous: false,
+  interimResults: false,
+  lang: 'en-US',
+  maxAlternatives: 1,
+  start: jest.fn(),
+  stop: jest.fn(),
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  onresult: null,
+  onerror: null,
+  onend: null,
+});
+
+// Create constructor functions that won't be affected by clearAllMocks
+const webkitSpeechRecognitionConstructor = function() {
+  return createSpeechRecognitionInstance();
+};
+
+const SpeechRecognitionConstructor = function() {
+  return createSpeechRecognitionInstance();
+};
+
+Object.defineProperty(window, 'webkitSpeechRecognition', {
+  value: webkitSpeechRecognitionConstructor,
+  writable: true,
+});
+
+Object.defineProperty(window, 'SpeechRecognition', {
+  value: SpeechRecognitionConstructor,
+  writable: true,
+});
+
+// Mock window.alert for tests
+Object.defineProperty(window, 'alert', {
+  writable: true,
+  value: jest.fn(),
+});
